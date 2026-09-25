@@ -159,4 +159,4 @@ async function execute(interaction) {
   return interaction.editReply({ content: text.slice(0, 1990), allowedMentions: { parse: [] } });
 }
 
-module.exports = { command, execute, check };
+module.exports = { command, execute, check, createChannels, createRoles };
