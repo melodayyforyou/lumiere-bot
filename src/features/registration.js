@@ -95,7 +95,35 @@ async function submit(interaction) {
 
   const cls = record.class ? ` A **${record.class}** named **${record.ign}**.` : '';
   const line = previous ? `🔄 Record updated.${cls} Officers have the new version.` : `📝 Registered!${cls} The officers can see you now. Wings up on launch night. ⚜️`;
-  return interaction.reply({ content: line, flags: EPHEMERAL });
+  await interaction.reply({ content: line, flags: EPHEMERAL });
+
+  // Public shout-out in the same channel so #registration feels alive. Names are shown, nobody is pinged.
+  const total = Object.keys(all).length;
+  await interaction.channel?.send({ content: shoutOut(user.id, record, total, Boolean(previous)), allowedMentions: { parse: [] } }).catch(() => {});
+}
+
+/** Pick a class emoji from config.classRoles by loose name match, else a generic one. */
+function classEmoji(name) {
+  const key = Object.keys(config.classRoles).find((k) => String(name).toLowerCase().includes(k.toLowerCase()));
+  return key ? config.classRoles[key].emoji : '⚔️';
+}
+
+const SHOUTS = [
+  (who, what) => `${what} ${who} just enlisted as a **{class}**. Atreia trembles.`,
+  (who, what) => `${what} A wild **{class}** appeared: ${who} is on the books.`,
+  (who, what) => `${what} ${who} locked in **{class}**. Bold choice. We respect it.`,
+  (who, what) => `${what} ${who} registered a **{class}**. The roster gets stronger.`,
+  (who, what) => `${what} Welcome ${who}, our newest **{class}**. Someone tell the healers.`,
+];
+
+function shoutOut(userId, record, total, updated) {
+  const who = `<@${userId}>`;
+  const what = classEmoji(record.class);
+  const cls = record.class || 'mystery class';
+  if (updated) return `🔄 ${who} switched things up: now playing **${cls}** as **${record.ign}**.`;
+  const pick = SHOUTS[total % SHOUTS.length](who, what).replace('{class}', cls);
+  const milestone = total % 10 === 0 ? ` 🎉 That's **${total}** Daevas registered!` : ` (${total} registered)`;
+  return `${pick}${milestone}`;
 }
 
 module.exports = { panel, start, submit, load };
