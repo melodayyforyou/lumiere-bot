@@ -12,10 +12,10 @@ For Senz, and for the Claude Code session on the laptop. Read this first.
 - **Setup:** `/setup check` (read-only), `/setup create-channels`, `/setup create-roles` (creates only what's missing).
 - **Installer:** `deploy/install-vps.sh` uses its own private Node.js in `.node/` plus a systemd service named `lumiere-bot`.
 
-**Done on 2026-09-25 (laptop session):** Discord app created (bot user "Lumiere AION2", given Administrator by Senz), installed on the VPS as `lumiere-bot`, `config.json` filled with AION2 Division channel IDs and roles (member = AION2 Division; officers = AION2 Admins, Head Division, Lumiere Council), guide library posted to the `guidebooks` forum.
+**Done on 2026-09-25 (laptop session):** Discord app created (bot user "Lumiere AION2", given Administrator by Senz), installed on the VPS as `lumiere-bot`, `config.json` filled with AION2 Division channel IDs and roles (member = AION2 (see below); officers = AION2 Admins, Head Division, Lumiere Council), guide library posted to the `guidebooks` forum.
 
 **Not done yet:**
-1. [ ] Decide which role Join gives: `AION2` or `AION2 Division` (Senz said both exist, one is for verified members). Set `roles.member` accordingly.
+1. [x] Join gives the **AION2** role (`roles.member`). **AION2 Division** is for verified members and admins hand it out manually after the game releases. Set on the VPS 2026-09-25.
 2. [ ] `/setup create-channels` (for `#timed-events`), then `/announce template:recruitment ping:@everyone`.
 3. [ ] When NC announces the exact server-open times, update `dates` in `config.json` and set `timeConfirmed: true`.
 
