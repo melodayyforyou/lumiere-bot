@@ -20,6 +20,7 @@ const command = new SlashCommandBuilder()
     .addChoices(
       { name: 'Nobody', value: 'none' },
       { name: 'Legion members role', value: 'member' },
+      { name: 'Community roles (roles.communityPing in config.json)', value: 'community' },
       { name: '@here', value: 'here' },
       { name: '@everyone (whole server!)', value: 'everyone' },
     ))
@@ -104,7 +105,7 @@ async function handleModal(interaction, key) {
     new ButtonBuilder().setCustomId(`announce:post:${key}`).setLabel('Post it').setStyle(ButtonStyle.Success),
     new ButtonBuilder().setCustomId(`announce:cancel:${key}`).setLabel('Cancel').setStyle(ButtonStyle.Secondary),
   );
-  const pingLabel = { none: 'no ping', member: 'legion role ping', here: '@here', everyone: '@everyone' }[draft.ping];
+  const pingLabel = { none: 'no ping', member: 'legion role ping', community: 'community roles ping', here: '@here', everyone: '@everyone' }[draft.ping];
   const preview = draft.join ? roster.withRoster(buildEmbed(draft), roster.load().members) : buildEmbed(draft);
   // In the preview the Join button is shown greyed out, so nobody can click it before the real post.
   const components = draft.join ? [roster.joinRow(roster.load().members.length, true), buttons] : [buttons];

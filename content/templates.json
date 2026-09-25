@@ -1,9 +1,9 @@
 {
-  "_readme": "Pre-written announcements for /announce template:<name>. The text opens in a form so you can edit it before posting. Placeholders: {legion} {ea} {ea_relative} {launch} {launch_relative} {registration} {roles} {guides} {events}. \"joinButton\": true attaches the one-click Join button and live roster to the post.",
+  "_readme": "Pre-written announcements for /announce template:<name>. The text opens in a form so you can edit it before posting. Placeholders: {legion} {ea} {ea_relative} {launch} {launch_relative} {registration} {announcements} {faction} {roles} {guides} {events}. \"joinButton\": true attaches the one-click Join button and live roster to the post.",
   "recruitment": {
     "joinButton": true,
     "title": "⚜️ {legion} is recruiting for AION2",
-    "body": "Early Access opens **{ea}** ({ea_relative}). Global launch is **{launch}**.\n\n{legion} is building its AION2 roster **now**, so we're organized on day one.\n\n**Joining takes one click.** Hit **Join {legion}** below and you're in. Then:\n• Pick your class in {roles}\n• Read **Kanon's AION 2 Bible** in {guides}\n\nAll 8 classes welcome. See you in Atreia. ⚜️"
+    "body": "Early Access opens **{ea}** ({ea_relative}). Global launch is **{launch}**.\n\n{legion} is building its AION2 roster **now**, so we’re organized on day one.\n\n**Faction:** we’re going **{faction}**. Roll Elyos if you want to play with us.\n**Server:** announced on launch day, once NC opens the server list. Watch {announcements}.\n\n**Joining takes one click.** Hit **Join {legion}** below and you’re in. Then:\n• Pick your class in {roles}\n• Read **Kanon’s AION 2 Bible** in {guides}\n\nAll 8 classes welcome. See you in Atreia. ⚜️"
   },
   "early-access": {
     "title": "⏳ AION2 Early Access: {ea_relative}",
