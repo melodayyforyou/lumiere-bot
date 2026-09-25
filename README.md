@@ -4,7 +4,8 @@ A Discord bot for the **Lumiere** legion, built for your existing server. What i
 
 | Feature | Where | Who uses it |
 |---|---|---|
-| **Applications**: Apply button → 5-question form → officers get Accept / Interview / Reject buttons. The applicant gets a DM with the result. | `#registration` → a private officer channel | Everyone / officers |
+| **One-click join**: the recruitment announcement carries a **Join** button. Click it and you get the member role and your name appears on the roster list inside the announcement. Officers see join times with `/roster list`. | `#announcement` | Everyone / officers |
+| **Applications (optional, off by default)**: Apply button → 5-question form → officers Accept / Interview / Reject. Only used if you `/post panel:Registration`. | `#registration` → a private officer channel | Everyone / officers |
 | **Legion roles**: class and ping picker. **Off by default**, because your existing bot already runs the class panel in `#legion-roles` | `#legion-roles` | Members |
 | **Guide library**: curated English guides, with **Kanon's AION 2 Bible** first | `guidebooks` forum, plus `/guides` | Everyone |
 | **Announcements**: write → preview → post, with ready-made templates (recruitment, early-access, guides) | `#announcement` | Officers |
@@ -130,6 +131,7 @@ After editing: `sudo systemctl restart lumiere-bot`, then run `/setup check` in 
 | `/post panel:…` | Officers | Posts the registration, roles, guides or countdown panel. Re-posting guides **updates** the existing post |
 | `/event create / list / cancel` | Officers | Timed auto-announcements. `repeat` = once, daily or weekly. `reminders` = minutes before start |
 | `/guides` | Everyone | Shows the guide library privately |
+| `/roster list / remove` | Officers | Who clicked Join, with join times. `remove` takes someone off the list (their role is left alone) |
 | `/setup check / create-channels / create-roles` | Admins | Health check / create only what's missing |
 
 ## Editing content without touching code

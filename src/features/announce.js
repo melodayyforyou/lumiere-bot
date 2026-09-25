@@ -5,6 +5,7 @@ const {
 const config = require('../config');
 const templates = require('../../content/templates.json');
 const { EPHEMERAL, channelOf, roleOf, requireOfficer, embed, ts, postPerms } = require('../util');
+const roster = require('./roster');
 
 const TEMPLATE_NAMES = Object.keys(templates).filter((k) => !k.startsWith('_'));
 const DRAFT_TTL_MS = 30 * 60 * 1000;
@@ -23,7 +24,8 @@ const command = new SlashCommandBuilder()
       { name: '@everyone (whole server!)', value: 'everyone' },
     ))
   .addChannelOption((o) => o.setName('channel').setDescription('Where to post (default: announcement channel)')
-    .addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement));
+    .addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement))
+  .addBooleanOption((o) => o.setName('join_button').setDescription('Add the one-click "Join" button + live roster (default: only for the recruitment template)'));
 
 function mentionOf(ref) {
   return ref && ref.id ? `<#${ref.id}>` : '#(not set up)';
@@ -40,6 +42,7 @@ function fill(guild, text) {
     launch: ts(d.launch, style),
     launch_relative: ts(d.launch, 'R'),
     registration: mentionOf(channelOf(guild, 'registration')),
+    announcements: mentionOf(channelOf(guild, 'announcements')),
     roles: mentionOf(channelOf(guild, 'legionRoles')),
     guides: mentionOf(channelOf(guild, 'guidebooks')),
     events: mentionOf(channelOf(guild, 'events')),
@@ -71,7 +74,10 @@ async function execute(interaction) {
   }
   const tpl = templates[interaction.options.getString('template')] || { title: '', body: '' };
   const key = interaction.id;
-  drafts.set(key, { channelId: channel.id, ping: interaction.options.getString('ping') || 'none', createdAt: Date.now() });
+  // The Join button is on when the officer asks for it, or by default for templates flagged "joinButton".
+  const joinOpt = interaction.options.getBoolean('join_button');
+  const join = joinOpt === null ? Boolean(tpl.joinButton) : joinOpt;
+  drafts.set(key, { channelId: channel.id, ping: interaction.options.getString('ping') || 'none', join, createdAt: Date.now() });
 
   const modal = new ModalBuilder().setCustomId(`announce:modal:${key}`).setTitle('New announcement');
   const title = new TextInputBuilder().setCustomId('title').setLabel('Title').setStyle(TextInputStyle.Short)
@@ -99,10 +105,13 @@ async function handleModal(interaction, key) {
     new ButtonBuilder().setCustomId(`announce:cancel:${key}`).setLabel('Cancel').setStyle(ButtonStyle.Secondary),
   );
   const pingLabel = { none: 'no ping', member: 'legion role ping', here: '@here', everyone: '@everyone' }[draft.ping];
+  const preview = draft.join ? roster.withRoster(buildEmbed(draft), roster.load().members) : buildEmbed(draft);
+  // In the preview the Join button is shown greyed out, so nobody can click it before the real post.
+  const components = draft.join ? [roster.joinRow(roster.load().members.length, true), buttons] : [buttons];
   return interaction.reply({
-    content: `**Preview.** Nothing has been posted yet.\nWill post in <#${draft.channelId}> with **${pingLabel}**.`,
-    embeds: [buildEmbed(draft)],
-    components: [buttons],
+    content: `**Preview.** Nothing has been posted yet.\nWill post in <#${draft.channelId}> with **${pingLabel}**${draft.join ? ' and the **Join button + roster**' : ''}.`,
+    embeds: [preview],
+    components,
     flags: EPHEMERAL,
   });
 }
@@ -118,7 +127,13 @@ async function handleButton(interaction, action, key) {
   if (!channel || missing.length) {
     return interaction.update({ content: `⚠️ I can't post in <#${draft.channelId}>. Missing: ${missing ? missing.join(', ') : 'channel'}`, components: [] });
   }
-  const msg = await channel.send({ ...pingContent(interaction.guild, draft.ping), embeds: [buildEmbed(draft)] });
+  let payload = { ...pingContent(interaction.guild, draft.ping), embeds: [buildEmbed(draft)] };
+  if (draft.join) {
+    const members = roster.load().members;
+    payload = { ...payload, embeds: [roster.withRoster(payload.embeds[0], members)], components: [roster.joinRow(members.length)] };
+  }
+  const msg = await channel.send(payload);
+  if (draft.join) roster.register(msg);
   drafts.delete(key);
   return interaction.update({ content: `✅ Posted: ${msg.url}`, embeds: [], components: [] });
 }

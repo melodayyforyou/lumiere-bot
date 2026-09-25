@@ -6,6 +6,7 @@ const registration = require('./features/registration');
 const roles = require('./features/roles');
 const events = require('./features/events');
 const setup = require('./features/setup');
+const roster = require('./features/roster');
 const { EPHEMERAL } = require('./util');
 
 const { DISCORD_TOKEN, GUILD_ID } = process.env;
@@ -45,6 +46,7 @@ async function route(interaction) {
 
   if (interaction.isButton()) {
     if (feature === 'announce') return announce.handleButton(interaction, action, arg);
+    if (feature === 'roster' && action === 'join') return roster.handleJoin(interaction);
     if (feature === 'apply' && action === 'start') return registration.start(interaction);
     if (feature === 'apply') return registration.review(interaction, action, arg);
     if (feature === 'roles' && action === 'ping') return roles.togglePing(interaction, arg);

@@ -4,5 +4,6 @@ module.exports = [
   require('./features/post'),
   require('./features/events'),
   require('./features/guides'),
+  require('./features/roster'),
   require('./features/setup'),
 ];

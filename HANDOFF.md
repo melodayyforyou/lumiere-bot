@@ -12,12 +12,12 @@ For Senz, and for the Claude Code session on the laptop. Read this first.
 - **Setup:** `/setup check` (read-only), `/setup create-channels`, `/setup create-roles` (creates only what's missing).
 - **Installer:** `deploy/install-vps.sh` uses its own private Node.js in `.node/` plus a systemd service named `lumiere-bot`.
 
+**Done on 2026-09-25 (laptop session):** Discord app created (bot user "Lumiere AION2", given Administrator by Senz), installed on the VPS as `lumiere-bot`, `config.json` filled with AION2 Division channel IDs and roles (member = AION2 Division; officers = AION2 Admins, Head Division, Lumiere Council), guide library posted to the `guidebooks` forum.
+
 **Not done yet:**
-1. [ ] Create the Discord application: README section 1 (A–F).
-2. [ ] Install on the VPS: README section 2. The VPS is DigitalOcean `polybot-blr`, Ubuntu 22.04, and already runs another bot ("polybot"), so **don't touch it**.
-3. [ ] Fill in the real role names in `config.json`: `roles.officers` (currently the placeholder `"Legion Officer"`) and `roles.member` (placeholder `"Lumiere Legion"`).
-4. [ ] In Discord: `/setup check` → `/setup create-channels` → `/post panel:Registration` → `/post panel:Guide library` → `/announce template:recruitment`.
-5. [ ] When NC announces the exact server-open times, update `dates` in `config.json` and set `timeConfirmed: true`.
+1. [ ] Decide which role Join gives: `AION2` or `AION2 Division` (Senz said both exist, one is for verified members). Set `roles.member` accordingly.
+2. [ ] `/setup create-channels` (for `#timed-events`), then `/announce template:recruitment ping:@everyone`.
+3. [ ] When NC announces the exact server-open times, update `dates` in `config.json` and set `timeConfirmed: true`.
 
 ## Key facts and decisions
 
