@@ -1,0 +1,81 @@
+{
+  "_readme": "Guide library posted by /post guides and shown by /guides. Edit freely, then run /post guides again: it updates the existing post instead of making a new one. Every link here was checked live on 2026-09-25.",
+  "title": "📚 Lumiere Guide Library (English)",
+  "intro": "Start here before Early Access. Read the **Kanon Bible** first; everything else is extra depth. Officers keep this post updated, so check back after patches.",
+  "sections": [
+    {
+      "name": "⭐ Start here: the Bible",
+      "guides": [
+        {
+          "title": "Kanon's AION 2 Bible",
+          "creator": "Kanon (KanonXO)",
+          "url": "https://docs.google.com/document/d/11u4wLCG1WfL-xSka2Aze0rI9vYRa7mq3N3Gp1bt0AWY/",
+          "note": "Character progression, stats, gear, damage formulas. Kanon keeps updating it. **Required reading for Lumiere.**"
+        },
+        {
+          "title": "Kanon's AION 2 video playlist",
+          "creator": "Kanon (KanonXO)",
+          "url": "https://www.youtube.com/playlist?list=PLvZzC6Lm0g9sBbjJmI5-Is6Nf6ctLfDiC",
+          "note": "Kanon's impressions and launch-prep videos. Live on twitch.tv/kanonxo."
+        }
+      ]
+    },
+    {
+      "name": "🧭 Picking your class",
+      "guides": [
+        {
+          "title": "I Rated EVERY Class in AION 2 Global (What To Pick!?)",
+          "creator": "Spid",
+          "url": "https://www.youtube.com/watch?v=nb5TNvrTA4Q",
+          "note": "Video rundown of all 8 classes for the global version."
+        },
+        {
+          "title": "Class Tier List: Best Class to Main at Launch",
+          "creator": "MMO Codex",
+          "url": "https://mmo-codex.com/articles/aion-2-class-tier-list/",
+          "note": "Written tier list for PvE, leveling and PvP."
+        },
+        {
+          "title": "AION 2 Class Tier List for the Global Launch",
+          "creator": "WikiRealm",
+          "url": "https://aion2.wikirealm.com/classes/class-tier-list/",
+          "note": "Second opinion. Compare it with MMO Codex before you lock your class."
+        }
+      ]
+    },
+    {
+      "name": "🚀 Leveling & endgame",
+      "guides": [
+        {
+          "title": "The Tryhard Bible: Level 1 to Ludra",
+          "creator": "GuideMMO",
+          "url": "https://guidemmo.com/bible-aion-2-en/",
+          "note": "Leveling route, daily/weekly resets, Rifts, Nightmare, gear score."
+        },
+        {
+          "title": "Sanctuary: Ludra raid guide",
+          "creator": "GuideMMO",
+          "url": "https://guidemmo.com/sanctuary-ludra-en/",
+          "note": "Read before your first Ludra run."
+        },
+        {
+          "title": "Beginner Guide for the Global Launch",
+          "creator": "MMO Codex",
+          "url": "https://mmo-codex.com/articles/aion-2-beginner-guide/",
+          "note": "Good if AION is new to you."
+        }
+      ]
+    },
+    {
+      "name": "✅ Launch prep",
+      "guides": [
+        {
+          "title": "Launch Countdown: what to do before Early Access & launch",
+          "creator": "Timesaver",
+          "url": "https://timesaver.gg/blog/aion-2-launch-countdown-checklist",
+          "note": "Pre-launch checklist: install, settings, first-day plan."
+        }
+      ]
+    }
+  ]
+}

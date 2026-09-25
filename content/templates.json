@@ -1,0 +1,15 @@
+{
+  "_readme": "Pre-written announcements for /announce template:<name>. The text opens in a form so you can edit it before posting. Placeholders: {legion} {ea} {ea_relative} {launch} {launch_relative} {registration} {roles} {guides} {events}",
+  "recruitment": {
+    "title": "⚜️ {legion} is recruiting for AION2",
+    "body": "AION2 Early Access opens **{ea}** ({ea_relative}), and the global launch follows on **{launch}**.\n\n{legion} is building its AION2 roster **now**, so we're organized on day one.\n\n**How to join**\n1️⃣ Read the guides in {guides}. Start with **Kanon's AION 2 Bible**.\n2️⃣ Apply in {registration}. It takes 2 minutes.\n3️⃣ When you're accepted, pick your class and ping roles in {roles}.\n\n**What we're looking for**\n• Active players for Early Access or launch week\n• All 8 classes welcome (edit this line if you need specific classes)\n• People who show up for legion content and read the guides\n\nApplications are reviewed daily by officers. See you in Atreia. ⚜️"
+  },
+  "early-access": {
+    "title": "⏳ AION2 Early Access: {ea_relative}",
+    "body": "Early Access (Founder's Pack) opens **{ea}**.\nGlobal free-to-play launch: **{launch}**.\n\n**Before you log in**\n• Finish the download early. Don't wait for server-open.\n• Read **Kanon's AION 2 Bible** in {guides}.\n• Lock in your class and set your role in {roles}.\n• Not in the legion yet? Apply in {registration} **today**.\n\nThe legion meet-up time will be posted in {events} once NC confirms server-open time."
+  },
+  "guides": {
+    "title": "📚 Guide library is live",
+    "body": "We've collected the best English AION2 guides in one place: {guides}\n\n⭐ **Kanon's AION 2 Bible** is required reading for every {legion} member. It covers progression, stats, gear and damage formulas.\n\nFound a great guide? Send it to an officer and we'll add it."
+  }
+}

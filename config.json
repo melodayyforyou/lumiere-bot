@@ -1,0 +1,112 @@
+{
+  "_readme": "Every channel/role below can be an ID (safest) or an exact name. Run /setup check in Discord after editing. Leave a value empty (\"\") to switch that feature off. timezone = default zone officers type event times in (IANA name).",
+  "features": {
+    "_note": "rolePanel is off because the server's existing bot already has a class picker in #legion-roles. Turn it on only if you retire that one.",
+    "rolePanel": false
+  },
+  "legion": {
+    "name": "Lumiere",
+    "game": "AION2",
+    "faction": "TBA",
+    "server": "TBA",
+    "color": "#C9A227",
+    "logoUrl": ""
+  },
+  "channels": {
+    "announcements": "announcement",
+    "registration": "registration",
+    "legionRoles": "legion-roles",
+    "guidebooks": "guidebooks",
+    "applicationsReview": "legion-applications",
+    "welcome": "legion-chat",
+    "events": "timed-events"
+  },
+  "roles": {
+    "officers": [
+      "Legion Officer"
+    ],
+    "member": "Lumiere Legion",
+    "applicant": "Lumiere Applicant",
+    "announcementPing": "Lumiere Legion"
+  },
+  "classRoles": {
+    "Gladiator": {
+      "role": "Gladiator",
+      "emoji": "⚔️",
+      "position": "Melee DPS / Off-tank"
+    },
+    "Templar": {
+      "role": "Templar",
+      "emoji": "🛡️",
+      "position": "Tank"
+    },
+    "Assassin": {
+      "role": "Assassin",
+      "emoji": "🗡️",
+      "position": "Melee DPS"
+    },
+    "Ranger": {
+      "role": "Ranger",
+      "emoji": "🏹",
+      "position": "Ranged DPS"
+    },
+    "Sorcerer": {
+      "role": "Sorcerer",
+      "emoji": "🔥",
+      "position": "Magic DPS"
+    },
+    "Spiritmaster": {
+      "role": "Spiritmaster",
+      "emoji": "🌀",
+      "position": "Magic DPS / Control"
+    },
+    "Cleric": {
+      "role": "Cleric",
+      "emoji": "✨",
+      "position": "Healer"
+    },
+    "Chanter": {
+      "role": "Chanter",
+      "emoji": "📿",
+      "position": "Support / Buffer"
+    }
+  },
+  "pingRoles": [
+    {
+      "label": "Raid & Dungeon pings",
+      "emoji": "🐉",
+      "role": "Raid Ping"
+    },
+    {
+      "label": "PvP / Abyss pings",
+      "emoji": "⚡",
+      "role": "PvP Ping"
+    },
+    {
+      "label": "Legion event pings",
+      "emoji": "🎉",
+      "role": "Event Ping"
+    }
+  ],
+  "dates": {
+    "_note": "NC has not published exact server-open times yet. Set timeConfirmed to true once you put real times in (ISO format, e.g. 2026-09-30T16:00:00Z).",
+    "earlyAccess": "2026-09-30T00:00:00Z",
+    "launch": "2026-10-05T00:00:00Z",
+    "timeConfirmed": false
+  },
+  "timezone": "Asia/Jakarta",
+  "events": {
+    "_note": "Auto-posts in channels.events. reminders = minutes before start. dailyCountdown posts a countdown to Early Access / launch every day at `time` (in `timezone`) until launch day.",
+    "defaultReminders": [
+      60,
+      15,
+      0
+    ],
+    "lateGraceMinutes": 15,
+    "dailyCountdown": {
+      "enabled": true,
+      "time": "20:00"
+    },
+    "createDiscordEvents": true
+  }
+}

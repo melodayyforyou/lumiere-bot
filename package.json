@@ -1,0 +1,17 @@
+{
+  "name": "lumiere-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for the Lumiere AION2 legion: announcements, applications, class roles and guide library.",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "private": true,
+  "engines": { "node": ">=18.17" },
+  "scripts": {
+    "deploy": "node src/deploy-commands.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.27.0",
+    "dotenv": "^16.4.5"
+  }
+}
