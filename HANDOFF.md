@@ -5,7 +5,7 @@ For Senz, and for the Claude Code session on the laptop. Read this first.
 ## Where things stand (2026-09-25)
 
 **Built and pushed (this repo, `main`):**
-- **Applications:** Apply button → 5-question form → a private officer channel with Accept / Interview / Reject. The applicant gets a DM; accepted members get the member role and a welcome in `#legion-chat`.
+- **Character registration (2026-09-25, replaces the approval form):** Register my character button in `#registration` → card in `#character-records` (config key `channels.applicationsReview`). Records in `data/characters.json`; re-registering edits the same card. The applicant role is gone.
 - **Guide library:** a pinned post in the `guidebooks` forum. Kanon's AION 2 Bible is first. Content lives in `content/guides.json`.
 - **Announcements:** `/announce`, which writes, previews, then posts. Templates are in `content/templates.json`.
 - **Timed events:** `/event create|list|cancel` posts reminders automatically in `#timed-events`, once, daily or weekly. There's also a daily launch countdown at 20:00 WIB until Oct 5.

@@ -18,7 +18,7 @@ const command = new SlashCommandBuilder()
   .setName('post')
   .setDescription('Officers: post a bot panel into its channel.')
   .addStringOption((o) => o.setName('panel').setDescription('Which panel').setRequired(true).addChoices(
-    { name: 'Registration (Apply button)', value: 'registration' },
+    { name: 'Registration (Register my character button)', value: 'registration' },
     { name: 'Legion roles (class + ping picker)', value: 'roles' },
     { name: 'Guide library (updates the existing post)', value: 'guides' },
     { name: 'Launch countdown (right now)', value: 'countdown' },

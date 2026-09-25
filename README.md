@@ -5,7 +5,7 @@ A Discord bot for the **Lumiere** legion, built for your existing server. What i
 | Feature | Where | Who uses it |
 |---|---|---|
 | **One-click join**: the recruitment announcement carries a **Join** button. Click it and you get the member role and your name appears on the roster list inside the announcement. Officers see join times with `/roster list`. | `#announcement` | Everyone / officers |
-| **Applications (optional, off by default)**: Apply button → 5-question form → officers Accept / Interview / Reject. Only used if you `/post panel:Registration`. | `#registration` → a private officer channel | Everyone / officers |
+| **Character registration**: a **Register my character** button in `#registration`. Name, class, Early Access or launch, play hours. No approval: the bot files a card in the officers-only records channel, and re-registering updates the card. | `#registration` → `#character-records` | Everyone / officers |
 | **Legion roles**: class and ping picker. **Off by default**, because your existing bot already runs the class panel in `#legion-roles` | `#legion-roles` | Members |
 | **Guide library**: curated English guides, with **Kanon's AION 2 Bible** first | `guidebooks` forum, plus `/guides` | Everyone |
 | **Announcements**: write → preview → post, with ready-made templates (recruitment, early-access, guides) | `#announcement` | Officers |
@@ -138,7 +138,7 @@ After editing: `sudo systemctl restart lumiere-bot`, then run `/setup check` in 
 
 - **Guides:** `content/guides.json`. Add, remove or reorder links, restart the bot, then `/post panel:Guide library` to update the post.
 - **Announcement templates:** `content/templates.json`. Placeholders like `{ea}`, `{launch_relative}` and `{registration}` turn into live dates and channel links.
-- **Application questions:** `FIELDS` at the top of `src/features/registration.js`. Discord allows a maximum of 5.
+- **Character form questions:** `FIELDS` at the top of `src/features/registration.js`. Discord allows a maximum of 5.
 
 Want to change something? Open this folder in Claude Code and describe the change in plain English, e.g. *"add a 6th guide section for PvP"* or *"ask applicants for their gear score"*.
 

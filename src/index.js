@@ -48,7 +48,6 @@ async function route(interaction) {
     if (feature === 'announce') return announce.handleButton(interaction, action, arg);
     if (feature === 'roster' && action === 'join') return roster.handleJoin(interaction);
     if (feature === 'apply' && action === 'start') return registration.start(interaction);
-    if (feature === 'apply') return registration.review(interaction, action, arg);
     if (feature === 'roles' && action === 'ping') return roles.togglePing(interaction, arg);
   }
   if (interaction.isStringSelectMenu() && interaction.customId === 'roles:class') {
@@ -57,7 +56,6 @@ async function route(interaction) {
   if (interaction.isModalSubmit()) {
     if (feature === 'announce') return announce.handleModal(interaction, arg);
     if (interaction.customId === 'apply:modal') return registration.submit(interaction);
-    if (feature === 'apply' && action === 'rejectmodal') return registration.rejectSubmit(interaction, arg);
   }
 }
 

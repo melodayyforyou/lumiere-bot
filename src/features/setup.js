@@ -10,7 +10,7 @@ const command = new SlashCommandBuilder()
   .setDescription('Admins: check or prepare the bot for this server.')
   .setDefaultMemberPermissions(P.ManageGuild)
   .addSubcommand((s) => s.setName('check').setDescription('Read-only health check. Changes nothing.'))
-  .addSubcommand((s) => s.setName('create-channels').setDescription('Create ONLY the missing timed-events and officer applications channels'))
+  .addSubcommand((s) => s.setName('create-channels').setDescription('Create ONLY the missing timed-events and character-records channels'))
   .addSubcommand((s) => s.setName('create-roles').setDescription('Create ONLY the missing roles named in config.json (no permissions)'));
 
 const ok = (t) => `✅ ${t}`;
@@ -31,7 +31,7 @@ function check(guild) {
   if (!me.permissions.has(P.ManageRoles)) out.push(bad('I don\'t have **Manage Roles**'));
   const top = me.roles.highest.position;
   const handOut = [
-    ['member', config.roles.member], ['applicant', config.roles.applicant],
+    ['member', config.roles.member],
     ...(config.features.rolePanel ? [
       ...Object.entries(config.classRoles).map(([n, c]) => [n, c.role]),
       ...config.pingRoles.map((p) => [p.label, p.role]),
@@ -109,7 +109,7 @@ async function createChannels(guild) {
       name: `🗂️｜${config.channels.applicationsReview}`,
       type: ChannelType.GuildText,
       parent: parent?.id,
-      topic: 'Legion applications land here. Officers only.',
+      topic: 'Character records from #registration. Officers only.',
       permissionOverwrites: overwrites,
       reason: '/setup create-channels',
     });
@@ -122,7 +122,7 @@ async function createRoles(guild) {
   const me = guild.members.me;
   if (!me.permissions.has(P.ManageRoles)) return bad('I need **Manage Roles**.');
   const wanted = [
-    [config.roles.member, null], [config.roles.applicant, null],
+    [config.roles.member, null],
     // Class/ping roles belong to the existing bot's panel unless ours is switched on.
     ...(config.features.rolePanel ? [
       ...Object.values(config.classRoles).map((c) => [c.role, null]),
