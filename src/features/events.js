@@ -196,7 +196,7 @@ function countdownEmbed(guild, today) {
   const launchDays = daysBetween(today, localDate(new Date(d.launch), config.timezone));
   const phrase = (n, what) => (n > 1 ? `${n} days until ${what}` : n === 1 ? `${what} is TOMORROW` : `${what} is TODAY`);
   const title = eaDays >= 0 ? phrase(eaDays, 'Early Access') : phrase(launchDays, 'global launch');
-  const reg = channelOf(guild, 'registration');
+  const ann = channelOf(guild, 'announcements');
   const guides = channelOf(guild, 'guidebooks');
   return embed()
     .setTitle(`⏳ ${config.legion.game}: ${title}`)
