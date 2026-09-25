@@ -204,7 +204,7 @@ function countdownEmbed(guild, today) {
       eaDays >= 0 ? `**Early Access (Founder's Pack):** ${ts(d.earlyAccess, style)}` : null,
       `**Global launch:** ${ts(d.launch, style)}`,
       '',
-      reg ? `Not in ${config.legion.name} yet? Apply in <#${reg.id}>.` : null,
+      ann ? `Not in ${config.legion.name} yet? Hit **Join** on the recruitment post in <#${ann.id}>. One click.` : null,
       guides ? `Prep with the guides in <#${guides.id}>. Start with Kanon's Bible.` : null,
     ].filter((l) => l !== null).join('\n'));
 }
