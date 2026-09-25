@@ -17,7 +17,7 @@ const FIELDS = [
   { id: 'class', label: 'Main class', style: TextInputStyle.Short, max: 60, placeholder: CLASS_LIST.slice(0, 100) },
   { id: 'access', label: 'Early Access (Founder) or Oct 5 launch?', style: TextInputStyle.Short, max: 60, placeholder: 'e.g. Early Access, Founder\'s Pack bought' },
   { id: 'schedule', label: 'Timezone & usual play hours', style: TextInputStyle.Short, max: 100, placeholder: 'e.g. GMT+7, weekdays 20:00-01:00' },
-  { id: 'notes', label: 'Anything else? (optional)', style: TextInputStyle.Paragraph, max: 500, required: false, placeholder: 'Alt class, played AION 1, looking for a static, ...' },
+  { id: 'notes', label: 'About you (optional)', style: TextInputStyle.Paragraph, max: 1500, required: false, placeholder: 'Veteran of AION 1 / AION2 KR-TW? Alt classes? Looking for a static? PvP or PvE? Say hi.' },
 ];
 
 const load = () => store.load('characters', {});   // { userId: { ...answers, name, at, messageId } }
@@ -99,7 +99,20 @@ async function submit(interaction) {
 
   // Public shout-out in the same channel so #registration feels alive. Names are shown, nobody is pinged.
   const total = Object.keys(all).length;
-  await interaction.channel?.send({ content: shoutOut(user.id, record, total, Boolean(previous)), allowedMentions: { parse: [] } }).catch(() => {});
+  await interaction.channel?.send({ content: shoutOut(user.id, record, total, Boolean(previous)), embeds: [publicCard(user, record)], allowedMentions: { parse: [] } }).catch(() => {});
+}
+
+/** The profile everyone sees in #registration (same info as the officer card, friendlier layout). */
+function publicCard(user, record) {
+  const e = embed()
+    .setAuthor({ name: record.ign, iconURL: user.displayAvatarURL() })
+    .addFields(
+      { name: '⚔️ Class', value: record.class || '-', inline: true },
+      { name: '🎟️ Playing from', value: record.access || '-', inline: true },
+      { name: '🕒 Online', value: record.schedule || '-', inline: true },
+    );
+  if (record.notes) e.setDescription(record.notes.slice(0, 1500));
+  return e;
 }
 
 /** Pick a class emoji from config.classRoles by loose name match, else a generic one. */
