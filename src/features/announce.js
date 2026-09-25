@@ -58,6 +58,11 @@ function pingContent(guild, ping) {
     const role = roleOf(guild, config.roles.announcementPing);
     if (role) return { content: `<@&${role.id}>`, allowedMentions: { roles: [role.id] } };
   }
+  if (ping === 'community') {
+    // Ping several existing server roles at once (e.g. Community Member, PC, Mmorpg) instead of @everyone.
+    const roles = config.roles.communityPing.map((ref) => roleOf(guild, ref)).filter(Boolean);
+    if (roles.length) return { content: roles.map((r) => `<@&${r.id}>`).join(' '), allowedMentions: { roles: roles.map((r) => r.id) } };
+  }
   return { allowedMentions: { parse: [] } };
 }
 

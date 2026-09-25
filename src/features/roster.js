@@ -56,7 +56,7 @@ function withRoster(sourceEmbed, members) {
 
   const header = `${FIELD_TITLE} (${members.length})`;
   if (!members.length) {
-    fields.push({ name: header, value: '_Nobody yet. Be the first!_' });
+    fields.push({ name: header, value: '_Empty. Someone has to be first. Might as well be you._' });
   } else {
     chunks.forEach((lines, i) => fields.push({ name: i === 0 ? header : `${FIELD_TITLE} (continued)`, value: lines.join('\n') }));
     if (shown < members.length) fields.push({ name: `${FIELD_TITLE} (continued)`, value: `…and ${members.length - shown} more` });
@@ -93,7 +93,7 @@ async function handleJoin(interaction) {
   const data = load();
   const { member, user } = interaction;
   if (data.members.some((m) => m.id === user.id)) {
-    return interaction.reply({ content: `You're already on the ${config.legion.name} roster! ⚜️`, flags: EPHEMERAL });
+    return interaction.reply({ content: `Easy there, Daeva. You're already on the ${config.legion.name} roster. ⚜️ Go pick your class instead.`, flags: EPHEMERAL });
   }
 
   // Give the member role first. If it fails the click is still recorded, and the log says why.
@@ -115,7 +115,9 @@ async function handleJoin(interaction) {
   data.messages = [...others.messages, { channelId: interaction.message.channelId, messageId: interaction.message.id }];
   save(data);
 
-  return interaction.followUp({ content: `⚜️ Welcome to ${config.legion.name}! You're #${data.members.length} on the roster.${roleNote}`, flags: EPHEMERAL });
+  const n = data.members.length;
+  const flavour = n === 1 ? 'First one in. Legend.' : n <= 10 ? 'Founding squad material.' : n <= 50 ? 'The legion grows.' : 'Atreia won\'t know what hit it.';
+  return interaction.followUp({ content: `⚜️ Welcome to ${config.legion.name}, Daeva! You're **#${n}** on the roster. ${flavour}${roleNote}`, flags: EPHEMERAL });
 }
 
 const command = new SlashCommandBuilder()
