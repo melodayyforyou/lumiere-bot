@@ -38,6 +38,7 @@ function fill(guild, text) {
   const style = d.timeConfirmed ? 'F' : 'D';
   const values = {
     legion: config.legion.name,
+    faction: config.legion.faction,
     ea: ts(d.earlyAccess, style),
     ea_relative: ts(d.earlyAccess, 'R'),
     launch: ts(d.launch, style),
